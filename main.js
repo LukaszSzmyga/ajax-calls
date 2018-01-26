@@ -1,18 +1,21 @@
 ﻿document.addEventListener("DOMContentLoaded", function() {
 
+var pageCounter = 1;
 var peopleInfo = document.getElementById("personal-info");
 var btn = document.getElementById("btn");
 
 btn.addEventListener("click", function() {
   var ourRequest = new XMLHttpRequest();
-  ourRequest.open("GET", "http://www.filltext.com/?rows=9&fname={firstName}&lname={lastName}&tel={phone|format}}&city={city}&pretty=true");
+  ourRequest.open("GET", "https://raw.githubusercontent.com/LukaszSzmyga/json-example/master/people-" + pageCounter + ".json");
   ourRequest.onload = function () {
       var ourData = JSON.parse(ourRequest.responseText);
       renderHTML(ourData);
   };
-  ourRequest.send()
-    
-  btn.classList.add("hide-me");
+  ourRequest.send();
+  pageCounter++;
+  if (pageCounter > 4) {
+    btn.classList.add("hide-me");
+  }
 });
 
 function renderHTML(data) {
