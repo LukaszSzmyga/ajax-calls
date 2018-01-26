@@ -1,4 +1,6 @@
-﻿var peopleInfo = document.getElementById("personal-info");
+﻿document.addEventListener("DOMContentLoaded", function() {
+
+var peopleInfo = document.getElementById("personal-info");
 var btn = document.getElementById("btn");
 
 btn.addEventListener("click", function() {
@@ -22,3 +24,4 @@ function renderHTML(data) {
 
   peopleInfo.insertAdjacentHTML("beforeend", htmlString);
 };
+});
