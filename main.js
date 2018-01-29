@@ -1,6 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function() {
-
-var pageCounter = 1;
+﻿var pageCounter = 1;
 var peopleInfo = document.getElementById("personal-info");
 var btn = document.getElementById("btn");
 
@@ -9,7 +7,7 @@ btn.addEventListener("click", function() {
   ourRequest.open("GET", "https://raw.githubusercontent.com/LukaszSzmyga/json-example/master/people-" + pageCounter + ".json");
   ourRequest.onload = function () {
       var ourData = JSON.parse(ourRequest.responseText);
-      renderHTML(ourData);
+      appendUsers(ourData);
   };
   ourRequest.send();
   pageCounter++;
@@ -18,7 +16,7 @@ btn.addEventListener("click", function() {
   }
 });
 
-function renderHTML(data) {
+function appendUsers(data) {
   var htmlString = "";
 
   for (i = 0; i < data.length; i++) {
@@ -27,4 +25,5 @@ function renderHTML(data) {
 
   peopleInfo.insertAdjacentHTML("beforeend", htmlString);
 };
-});
+
+document.addEventListener("DOMContentLoaded", main);
